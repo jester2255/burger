@@ -1,0 +1,20 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Eat a Burger",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jester2255/burger.git"
+  },
+  "author": "Philip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jester2255/burger/issues"
+  },
+  "homepage": "https://github.com/jester2255/burger#readme"
+}
