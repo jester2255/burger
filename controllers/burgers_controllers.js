@@ -1,92 +1,44 @@
-// Import MySQL connection.
+/*
+  Inside the burgers_controller.js file, import the following:
+  Express
+  burger.js
+  Create the router for the app, and export the router at the end of your file.
+*/
+var express = require("express");
+var router = express.Router();
 var connection = require("../config/connection.js");
+var burgers = require("../models/burger.js")
+router.get("/", function(req, res) {
+  burgers.selectAll(function(data) {
+    var hbsObject = {
+      burgers: data
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
+  });
+});
 
-// Helper function for SQL syntax.
-function printQuestionMarks(num) {
-  var arr = [];
+/*router.post("/", function(req, res) {
+  burgers.create([
+    "name", "sleepy"
+  ], [
+    req.body.name, req.body.sleepy
+  ], function() {
+    res.redirect("/");
+  });
+});
 
-  for (var i = 0; i < num; i++) {
-    arr.push("?");
-  }
+router.put("/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
 
-  return arr.toString();
-}
+  console.log("condition", condition);
 
-// Helper function for SQL syntax.
-function objToSql(ob) {
-  var arr = [];
-
-  for (var key in ob) {
-    if (Object.hasOwnProperty.call(ob, key)) {
-      arr.push(key + "=" + ob[key]);
-    }
-  }
-
-  return arr.toString();
-}
-
-// Object for all our SQL statement functions.
-var orm = {
-  all: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
-  create: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
-
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
-
-    console.log(queryString);
-
-    connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
-  // An example of objColVals would be {name: panther, sleepy: true}
-  update: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
-    });
-  },
-  delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
-    queryString += condition;
-
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
-    });
-  }
-};
-
-// Export the orm object for the model (cat.js).
-module.exports = orm;
+  cat.update({
+    sleepy: req.body.sleepy
+  }, condition, function() {
+    res.redirect("/");
+  });
+});
+*/
+// Export routes for server.js to use.
+module.exports = router;
