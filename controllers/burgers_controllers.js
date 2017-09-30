@@ -21,23 +21,23 @@ router.get("/", function(req, res) {
   });
 });
 
-/*router.post("/", function(req, res) {
-  burgers.create([
-    "name", "sleepy"
-  ], [
-    req.body.name, req.body.sleepy
+router.post("/", function(req, res) {
+  burgers.insertOne([
+    "burger_name", "devoured" 
+    ], [
+    req.body.name, req.body.Devoured
   ], function() {
     res.redirect("/");
   });
 });
-*/
+
 router.put("/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
     burgers.updateOne({
-      burger: req.body.burger
+      burger: req.body.name
    }, condition, function() {
       res.redirect("/");
     });

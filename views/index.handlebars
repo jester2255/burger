@@ -15,6 +15,7 @@
 		</li>
 	{{/unless}}
 	{{/each}}
+
 </ul>
 </div>
 <div>
@@ -29,3 +30,20 @@
 	{{/each}}
 </ul>
 </div>
+
+<h2>Add a Cat</h2>
+<form class="create-update-form" action="/" method="POST">
+
+  <div class="form-group">
+    <label for="brg">Burger Name:</label>
+    <input type="text" id="brg" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="devo">Devour?</label><br>
+    <input type="radio" name="Devoured" value="1" > Create and devour!<br>
+	<input type="radio" name="Devoured" value="0" checked> Create with devouring
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
