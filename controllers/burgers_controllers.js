@@ -9,7 +9,7 @@ var router = express.Router();
 var connection = require("../config/connection.js");
 var burgers = require("../models/burger.js")
 
-
+//get the burgers
 router.get("/", function(req, res) {
   burgers.selectAll(function(data) {
     var hbsObject = {
@@ -20,7 +20,7 @@ router.get("/", function(req, res) {
     res.render("index", hbsObject);
   });
 });
-
+//Post a new burger
 router.post("/", function(req, res) {
   burgers.insertOne([
     "burger_name", "devoured" 
@@ -30,7 +30,7 @@ router.post("/", function(req, res) {
     res.redirect("/");
   });
 });
-
+//devour burger
 router.put("/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
