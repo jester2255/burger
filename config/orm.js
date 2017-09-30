@@ -52,9 +52,13 @@ var orm ={
       console.log("here are the results in the orm")
       console.log(result);
     });
+  },
+  //insertOne()
+  updateOne: function(objColVals, condition, cb) {
+    orm.updateOne("burger", objColVals, condition, function(res) {
+      cb(res);
+    });
   }
-  /*insertOne() 
-  updateOne()*/
 }
 
 module.exports = orm;

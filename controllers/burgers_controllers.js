@@ -30,18 +30,18 @@ router.get("/", function(req, res) {
     res.redirect("/");
   });
 });
-
+*/
 router.put("/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
-  cat.update({
-    sleepy: req.body.sleepy
-  }, condition, function() {
-    res.redirect("/");
-  });
+    burgers.updateOne({
+      burger: req.body.burger
+   }, condition, function() {
+      res.redirect("/");
+    });
 });
-*/
+
 // Export routes for server.js to use.
 module.exports = router;
