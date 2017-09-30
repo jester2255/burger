@@ -8,11 +8,14 @@ var express = require("express");
 var router = express.Router();
 var connection = require("../config/connection.js");
 var burgers = require("../models/burger.js")
+
+
 router.get("/", function(req, res) {
   burgers.selectAll(function(data) {
     var hbsObject = {
       burgers: data
     };
+    console.log("Im in the controller")
     console.log(hbsObject);
     res.render("index", hbsObject);
   });
