@@ -1,9 +1,9 @@
 //mysql connection set up 
 var mysql = require("mysql");
 
-/*if(process.env.JAWSDB_URL){
+if(process.env.JAWSDB_URL){
   connection = mysql.createConnection(process.env.JAWSDB_URL)
-}else{*/
+}else{
 
 
 var connection = mysql.createConnection({
@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
   password: "5522retsej",//pasword for desktop || 5522retsej for laptop
   database: "burgers_db"
 });
-//};
+};
 // Make connection.
 connection.connect(function(err) {
   if (err) {
