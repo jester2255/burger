@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
   port: 3306,
   host: "localhost",
   user: "root",
-  password: "password",//pasword for desktop || 5522retsej for laptop
+  password: "5522retsej",//pasword for desktop || 5522retsej for laptop
   database: "burgers_db"
 });
 //};

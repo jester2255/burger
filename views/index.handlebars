@@ -1,49 +1,50 @@
 <div class="container">
-<h1>Eat-Da-Burger!!!</h1>
-	<div class="row">
-		<div class="col-md-5">
-			<h2>Tasty Burgers</h2>
-			<ul>
-				{{#each burgers}}
-				{{#unless this.devoured}}
-					<li>
-						{{this.burger_name}}
-						<form action="/{{this.id}}?_method=PUT" method="POST">
-			          	  <input type="hidden" name="eaten" value="true">
-			          	  <button type="submit">Devour!</button>
-			        	</form>
-					</li>
-				{{/unless}}
-				{{/each}}
-			</ul>
+	<h1>Eat-Da-Burger!!!</h1>
+		<div class="row">
+			<div class="col-md-5">
+				<h2>Tasty Burgers</h2>
+				<ul>
+					{{#each burgers}}
+					{{#unless this.devoured}}
+						<li>
+							{{this.burger_name}}
+							<form action="/{{this.id}}?_method=PUT" method="POST">
+				          	  <input type="hidden" name="eaten" value="true">
+				          	  <button type="submit">Devour!</button>
+				        	</form>
+						</li>
+					{{/unless}}
+					{{/each}}
+				</ul>
+			</div>
+			<div class="col-md-5">
+				<h2>DevouredBurgers</h2>
+				<ul>
+					{{#each burgers}}
+					{{#if this.devoured}}
+						<li>
+							{{this.burger_name}}
+						</li>
+					{{/if}}
+					{{/each}}
+				</ul>
+			</div>
 		</div>
-		<div class="col-md-5">
-			<h2>DevouredBurgers</h2>
-			<ul>
-				{{#each burgers}}
-				{{#if this.devoured}}
-					<li>
-						{{this.burger_name}}
-					</li>
-				{{/if}}
-				{{/each}}
-			</ul>
-		</div>
-	</div>
-</div>
+
 <h2>Add a Burger</h2>
-<form class="create-update-form" action="/" method="POST">
+	<form class="create-update-form" action="/" method="POST">
 
-  <div class="form-group">
-    <label for="brg">Burger Name:</label>
-    <input type="text" id="brg" name="name">
-  </div>
+	  <div class="form-group">
+	    <label for="brg">Burger Name:</label>
+	    <input type="text" id="brg" name="name">
+	  </div>
 
-  <div class="form-group">
-    <label for="devo">Devour?</label><br>
-    <input type="radio" name="Devoured" value="1" > Create and devour!<br>
-	<input type="radio" name="Devoured" value="0" checked> Create with devouring
-  </div>
+	  <div class="form-group">
+	    <label for="devo">Devour?</label><br>
+	    <input type="radio" name="Devoured" value="1" > Create and devour!<br>
+		<input type="radio" name="Devoured" value="0" checked> Create with devouring
+	  </div>
 
-  <button type="submit">Add Burger</button>
-</form>
+	  <button type="submit">Add Burger</button>
+	</form>
+</div>
